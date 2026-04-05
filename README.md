@@ -1,9 +1,5 @@
-# DevOps Project Report: Automated CI/CD Pipeline for a 2-Tier Flask Application on AWS
+<img width="2726" height="769" alt="image" src="https://github.com/user-attachments/assets/cc0201ab-b9e9-425d-8490-2fa759f14355" /># DevOps Project Report: Automated CI/CD Pipeline for a 2-Tier Flask Application on AWS
 
-**Author:** Prashant Gohel
-**Date:** August 23, 2025
-
----
 
 ### **Table of Contents**
 1. [Project Overview](#1-project-overview)
@@ -125,14 +121,26 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
     sudo apt update
     sudo apt install jenkins -y
     ```
+    Remove Jenkins if needed
+    ```bash
+    sudo systemctl stop jenkins
+    sudo apt remove jenkins -y
+    sudo rm -rf /var/lib/jenkins
+    ```
+    or Try this installation
+    ```bash
+    get https://pkg.jenkins.io/debian-stable/binary/jenkins_2.492.1_all.deb
+    sudo dpkg -i jenkins_2.492.1_all.deb
+    sudo apt --fix-broken install -y
+    ```
 
-3.  **Start and Enable Jenkins Service:**
+4.  **Start and Enable Jenkins Service:**
     ```bash
     sudo systemctl start jenkins
     sudo systemctl enable jenkins
     ```
 
-4.  **Initial Jenkins Setup:**
+5.  **Initial Jenkins Setup:**
     * Retrieve the initial admin password:
         ```bash
         sudo cat /var/lib/jenkins/secrets/initialAdminPassword
@@ -140,7 +148,7 @@ This document outlines the step-by-step process for deploying a 2-tier web appli
     * Access the Jenkins dashboard at `http://<ec2-public-ip>:8080`.
     * Paste the password, install suggested plugins, and create an admin user.
 
-5.  **Grant Jenkins Docker Permissions:**
+6.  **Grant Jenkins Docker Permissions:**
     ```bash
     sudo usermod -aG docker jenkins
     sudo systemctl restart jenkins
