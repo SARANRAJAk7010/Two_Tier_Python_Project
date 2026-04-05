@@ -1,4 +1,4 @@
-<img width="2726" height="769" alt="image" src="https://github.com/user-attachments/assets/cc0201ab-b9e9-425d-8490-2fa759f14355" /># DevOps Project Report: Automated CI/CD Pipeline for a 2-Tier Flask Application on AWS
+# DevOps Project Report: Automated CI/CD Pipeline for a 2-Tier Flask Application on AWS
 
 
 ### **Table of Contents**
