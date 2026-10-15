@@ -1,19 +1,15 @@
-pipeline{
+pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDS = credentials('dockerhub-creds')   // creates _USR and _PSW variables
-        IMAGE_NAME      = 'yourdockerhubuser/jenkins-demo-app'
+        DOCKERHUB_CREDS = credentials('dockerhub-creds')
+        IMAGE_NAME      = "${DOCKERHUB_CREDS_USR}/two-tier-python-app"
         IMAGE_TAG       = "${BUILD_NUMBER}"
     }
-    stages{
-        stage('Clone repo'){
-            steps{
-                git branch: 'main', url: 'https://github.com/SARANRAJAk7010/Two_Tier_Python_Project.git'
-            }
-        }
-        stage('Build image'){
-            steps{
+
+    stages {
+        stage('Build image') {
+            steps {
                 sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG -t $IMAGE_NAME:latest .'
             }
         }
@@ -29,6 +25,7 @@ pipeline{
             }
         }
     }
+
     post {
         always {
             sh 'docker logout || true'
